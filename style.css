@@ -1,1 +1,10 @@
 
+#five-weather {
+    position: absolute;
+    left: -2%;
+}
+
+h1 {
+    margin-bottom: 0%;
+    background-image: linear-gradient(to right, rgb(125, 174, 239), rgb(48, 116, 225) , rgb(3, 91, 173));
+}
