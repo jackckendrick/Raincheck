@@ -120,37 +120,6 @@ $(document).ready(function () {
       var humidityLevel = $("<p>").addClass("card-text").text("Humidity: " + data.main.humidity + " %");
       var windSpeed = $("<p>").addClass("card-text").text("Wind Speed: " + data.wind.speed + " MPH");
     
-    //retrieves information about the UV Index for a specific location, using the latitude and longitude coordinates previously retrieved from the API.
-          $.ajax({
-            type: "GET",
-            url: "https://api.openweathermap.org/data/2.5/uvi?appid=9f112416334ce37769e5c8683b218a0d&lat=" + lat + "&lon=" + lon,
-    
-    //The then() method is used to handle the response returned by the API. The response is stored in a variable called response.
-          }).then(function (response) {
-            console.log(response);
-    
-            var indexResp = response.value;
-    //The code then creates a few variables and HTML elements to display the UV Index information on the page.
-            var index = $("<p>").addClass("card-text").text("UV Index: ");
-            var indexButton = $("<span>").addClass("btn btn-sm").text(indexResp);
-    
-    //The btn-success bootstrap class makes the button green
-    //The btn-warning bootstrap class makes the button yellow
-    //The btn-danger bootstrap class makes the button red
-            if (indexResp < 3) {
-              indexButton.addClass("btn-success");
-            } else if (indexResp < 7) {
-              indexButton.addClass("btn-warning");
-            } else {
-              indexButton.addClass("btn-danger");
-            }
-    //appends the index element, which was previously created, to the cardBody element.
-    //selects the card body element for today's weather, specifically an element with the ID "currentDay" and the class "card-body". It then appends the index element to this selected element, and then appends the btn element to the index element.
-            cityText.append(index);
-            $("#currentDay .card-body").append(index.append(indexButton));
-    
-          });
-    
       //Essentially merges each elelment created in the weather function to display the elelements in the div with the currentDay ID
       //The image gets appended to the title
       //The title, temp, humidity, and wind variables which contain the specific elelments get appended to the cityText elelment which is a div
